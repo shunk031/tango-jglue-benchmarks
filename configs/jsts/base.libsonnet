@@ -79,7 +79,7 @@ local devices = 1;
                         project: "tango-jglue-benchmarks",
                         entity: "shunk031",
                         group: task_name,
-                        name: pretrained_model,
+                        name: "%s - %s" % [task_name, pretrained_model],
                         tags: [
                             pretrained_model,
                             task_name,
