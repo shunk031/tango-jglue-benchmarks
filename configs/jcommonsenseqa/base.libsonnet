@@ -1,17 +1,13 @@
-local task_name = "JNLI";
-local metric_name = "wnli";
+local task_name = "JCommonsenseQA";
 
-local max_seq_length = 128;
+local max_seq_length = 64;
 local num_epochs = 4;
-local batch_size = 32;
+local batch_size = 64;
 local learning_rate = 5e-5;
 local warmup_ratio = 0.1;
-local num_labels = 3;
+local pad_to_max_length = false;
 
-local num_train_steps = 2512;
-
-local collate_fn = { type: "transformers::DefaultDataCollator" };
-
+local num_train_steps = 560;
 local validate_every = 100;
 local val_metric_name = "accuracy";
 local devices = 1;
@@ -25,27 +21,21 @@ local devices = 1;
                 name: task_name,
             },
             tokenize_data: {
-                type: "tokenize_glue",
-                metric_name: metric_name,
+                type: "tokenize_swag",
                 dataset: { type: "ref", ref: "raw_data" },
-                tokenizer: { 
-                    pretrained_model_name_or_path: pretrained_model, 
-                    trust_remote_code: true
-                },
+                tokenizer: { pretrained_model_name_or_path: pretrained_model },
                 max_seq_length: max_seq_length,
+                pad_to_max_length: pad_to_max_length,
             },
             train_model: {
                 type: "torch::train",
                 model: {
-                    type: "jglue::hf_glue_model",
+                    type: "jglue::hf_swag_model",
                     base_model: {
-                        type: "transformers::AutoModelForSequenceClassification::from_pretrained",
+                        type: "transformers::AutoModelForMultipleChoice::from_pretrained",
                         pretrained_model_name_or_path: pretrained_model,
-                        num_labels: num_labels,
                     },
                     label_key: "labels",
-                    metric_path: "glue",
-                    metric_name: metric_name,
                 },
                 dataset_dict: { type: "ref", ref: "tokenize_data" },
                 training_engine: {
@@ -64,13 +54,23 @@ local devices = 1;
                 train_dataloader: {
                     shuffle: true,
                     batch_size: batch_size,
-                    collate_fn: collate_fn,
+                    collate_fn: if pad_to_max_length then {
+                        type: "transformers::DefaultDataCollator"
+                    } else {
+                        type: "transformers::DataCollatorForMultipleChoice",
+                        tokenizer: { pretrained_model_name_or_path: pretrained_model }
+                    },
                 },
                 validation_split: "validation",
                 validation_dataloader: {
                     shuffle: false,
                     batch_size: batch_size,
-                    collate_fn: collate_fn,
+                    collate_fn: if pad_to_max_length then {
+                        type: "transformers::DefaultDataCollator"
+                    } else {
+                        type: "transformers::DataCollatorForMultipleChoice",
+                        tokenizer: { pretrained_model_name_or_path: pretrained_model }
+                    },
                 },
                 validate_every: validate_every,
                 val_metric_name: val_metric_name,
@@ -87,7 +87,6 @@ local devices = 1;
                         tags: [
                             pretrained_model,
                             task_name,
-                            metric_name,
                         ],
                     },
                 ],
@@ -99,8 +98,12 @@ local devices = 1;
                 dataloader: {
                     shuffle: false,
                     batch_size: batch_size,
-                    collate_fn: collate_fn,
-
+                    collate_fn: if pad_to_max_length then {
+                        type: "transformers::DefaultDataCollator"
+                    } else {
+                        type: "transformers::DataCollatorForMultipleChoice",
+                        tokenizer: { pretrained_model_name_or_path: pretrained_model }
+                    },
                 },
                 metric_names: [ "loss", "accuracy" ],
                 test_split: "validation",

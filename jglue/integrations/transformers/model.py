@@ -39,3 +39,28 @@ class HfGlueModel(Model):
             output_dict.update(result)
 
         return output_dict
+
+
+@Model.register("jglue::hf_swag_model")
+class HfSwagModel(Model):
+    def __init__(
+        self,
+        base_model: Model,
+        label_key: str,
+    ) -> None:
+        super().__init__()
+        self.base_model = base_model
+        self.label_key = label_key
+
+    def forward(self, *args, **kwargs):
+        output = self.base_model(*args, **kwargs)
+        predictions = output.logits
+        gold_labels = kwargs.get(self.label_key)
+
+        output_dict = dict(output)
+
+        if gold_labels is not None:
+            predictions = predictions.argmax(dim=1)
+            output_dict["accuracy"] = (predictions == gold_labels).float().mean().item()
+
+        return output_dict
