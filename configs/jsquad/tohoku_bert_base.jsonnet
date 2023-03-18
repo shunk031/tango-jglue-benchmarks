@@ -30,6 +30,8 @@ local devices = 1;
             dataset: { type: "ref", ref: "raw_data" },
             tokenizer: { pretrained_model_name_or_path: pretrained_model },
             max_seq_length: max_seq_length,
+            doc_stride: 128,
+            pad_to_max_length: true,
         },
     },
 }

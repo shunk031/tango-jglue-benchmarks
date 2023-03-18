@@ -28,7 +28,10 @@ local devices = 1;
                 type: "tokenize_glue",
                 metric_name: metric_name,
                 dataset: { type: "ref", ref: "raw_data" },
-                tokenizer: { pretrained_model_name_or_path: pretrained_model },
+                tokenizer: { 
+                    pretrained_model_name_or_path: pretrained_model, 
+                    trust_remote_code: true
+                },
                 max_seq_length: max_seq_length,
             },
             train_model: {
@@ -48,7 +51,7 @@ local devices = 1;
                 training_engine: {
                     type: "torch",
                     optimizer: {
-                        type: "transformers::AdamW",
+                        type: "torch::AdamW",
                         lr: learning_rate,
                     },
                     lr_scheduler: {
@@ -80,7 +83,7 @@ local devices = 1;
                         project: "tango-jglue-benchmarks",
                         entity: "shunk031",
                         group: task_name,
-                        name: pretrained_model,
+                        name: "%s - %s" % [task_name, pretrained_model],
                         tags: [
                             pretrained_model,
                             task_name,
