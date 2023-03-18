@@ -17,17 +17,26 @@ local val_metric_name = "accuracy";
 local devices = 1;
 
 {
-    steps(pretrained_model) ::
+    steps(pretrained_model, is_pre_tokenize=false, analyzer="jumanpp") ::
         {
             raw_data: {
                 type: "datasets::load",
                 path: "shunk031/JGLUE",
                 name: task_name,
             },
+            [if is_pre_tokenize then "pre_tokenize_data"]: {
+                type: "apply_morphological_analysis",
+                dataset: { type: "ref", ref: "raw_data" },
+                analyzer_name: analyzer,
+                column_names: ["sentence1", "sentence2"],
+            },
             tokenize_data: {
                 type: "tokenize_glue",
                 metric_name: metric_name,
-                dataset: { type: "ref", ref: "raw_data" },
+                dataset: { 
+                    type: "ref", 
+                    ref: if is_pre_tokenize then "pre_tokenize_data" else "raw_data" 
+                },
                 tokenizer: { 
                     pretrained_model_name_or_path: pretrained_model, 
                     trust_remote_code: true
@@ -77,20 +86,20 @@ local devices = 1;
                 minimize_val_metric: false,
                 checkpoint_every: validate_every * 3,
                 device_count: devices,
-                callbacks: [
-                    {
-                        type: "wandb::log",
-                        project: "tango-jglue-benchmarks",
-                        entity: "shunk031",
-                        group: task_name,
-                        name: "%s - %s" % [task_name, pretrained_model],
-                        tags: [
-                            pretrained_model,
-                            task_name,
-                            metric_name,
-                        ],
-                    },
-                ],
+                // callbacks: [
+                //     {
+                //         type: "wandb::log",
+                //         project: "tango-jglue-benchmarks",
+                //         entity: "shunk031",
+                //         group: task_name,
+                //         name: "%s - %s" % [task_name, pretrained_model],
+                //         tags: [
+                //             pretrained_model,
+                //             task_name,
+                //             metric_name,
+                //         ],
+                //     },
+                // ],
             },
             eval_model: {
                 type: "torch::eval",
