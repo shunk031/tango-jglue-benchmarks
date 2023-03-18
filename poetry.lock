@@ -1760,6 +1760,17 @@ files = [
 ]
 
 [[package]]
+name = "ipadic"
+version = "1.0.0"
+description = "IPAdic packaged for Python"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "ipadic-1.0.0.tar.gz", hash = "sha256:f5923d31eca6131acaaf18ed28d8998665b1347b640d3a6476f64650e9a71c07"},
+]
+
+[[package]]
 name = "isort"
 version = "5.12.0"
 description = "A Python utility / library to sort Python imports."
@@ -2148,6 +2159,70 @@ python-versions = ">=3.7"
 files = [
     {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
     {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
+]
+
+[[package]]
+name = "mecab-python3"
+version = "1.0.6"
+description = "Python wrapper for the MeCab morphological analyzer for Japanese"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mecab-python3-1.0.6.tar.gz", hash = "sha256:16f38ace484020bd3446a10054829678c1e7b97f1740b58b00a31d595cff025e"},
+    {file = "mecab_python3-1.0.6-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:0fb9f5a06f9cd9c5724608956128b91f5330248a78e9de322a0abd5beaba24a3"},
+    {file = "mecab_python3-1.0.6-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6c99ec5f5581e4b56c8b68b4eeac4c6b59c6de12e66a2cfe4b1c6f8e87d38bd7"},
+    {file = "mecab_python3-1.0.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:30177272efa6ba26909b540e3816659c9f93ee49a5cc2b8ea47c17eff05c686b"},
+    {file = "mecab_python3-1.0.6-cp310-cp310-win_amd64.whl", hash = "sha256:fd10ba05f94dea7fe5e281336b7a4d07f79062c25139077d935833d0db303450"},
+    {file = "mecab_python3-1.0.6-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:023cfd4efa26fc61563ee185e8ac3d5fcdffcaba01931bbae34aa0ec06814875"},
+    {file = "mecab_python3-1.0.6-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:3eb8655d4eb7e17dbe7f409b8dda327539de9ee8cf06ebe338aa595bb597b53d"},
+    {file = "mecab_python3-1.0.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a455f0f1830392548366aae56819a22fa0f5786c39c4cf6cf84fe438a5fc7cbc"},
+    {file = "mecab_python3-1.0.6-cp311-cp311-win_amd64.whl", hash = "sha256:e28997040b5ea9df3cf8969c5d28e7ba730ef4f924badac0548cd14383e56c66"},
+    {file = "mecab_python3-1.0.6-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:2958a94ee7ed521e95c333a7b66adcead9973db3d4f4873789c425d41726e52c"},
+    {file = "mecab_python3-1.0.6-cp36-cp36m-win_amd64.whl", hash = "sha256:c80e58dcc90da095b64799950046dc4b9db3fb6bf30a8f817d1639cdaf601ba1"},
+    {file = "mecab_python3-1.0.6-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:8f0c5fe224c28ebd6fad2199be129755246091310de71eb9a43d88473d5b8950"},
+    {file = "mecab_python3-1.0.6-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e049805f8342020b559357f4ea2b69b7d4faf8681c979ffd868d4d25d3a89021"},
+    {file = "mecab_python3-1.0.6-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b56692cef89cd8ad0179bd2f989e4b3209686eb59124e0191167d9a3e64cd1a0"},
+    {file = "mecab_python3-1.0.6-cp37-cp37m-win_amd64.whl", hash = "sha256:68334cbc6e0442ccd57770137ece585de9a512f01405bd2ad074fd28578180f8"},
+    {file = "mecab_python3-1.0.6-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:ef43e4ab82396d1a59f4d8e2237c4136e09391e8e8ba623af4b52e6b52377fdd"},
+    {file = "mecab_python3-1.0.6-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:fde76ebc2fcf4f375b520a706af316f88be304302f5e5d36105992a1ecd3ea1b"},
+    {file = "mecab_python3-1.0.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:849aa7cfb828f0fb65340666fb2ae281855f5319699291121e116f43f478401c"},
+    {file = "mecab_python3-1.0.6-cp38-cp38-win_amd64.whl", hash = "sha256:d1061bcd3d5567d6522e8794773689e6f9dedadcd3d3b1652893142f6334ec95"},
+    {file = "mecab_python3-1.0.6-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:b2a3b6243d709ccf6672d54c9c17cb6281a17737626caaafb0219944835d6b9c"},
+    {file = "mecab_python3-1.0.6-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b8c995629aeb6bdddf37eee1c4049549ff1993e3888e28eb6cc59c8dce79de41"},
+    {file = "mecab_python3-1.0.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e00f0c329c7708b6cf5e5b2b1772535de3d6d69f99e6105a1acf40b94c62afe5"},
+    {file = "mecab_python3-1.0.6-cp39-cp39-win_amd64.whl", hash = "sha256:9c3eeb4adf864a74ced9a1c5443b174f1e851323143ca6f24391fb6db8d44110"},
+]
+
+[package.extras]
+unidic = ["unidic"]
+unidic-lite = ["unidic-lite"]
+
+[[package]]
+name = "mojimoji"
+version = "0.0.12"
+description = "A fast converter between Japanese hankaku and zenkaku characters"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mojimoji-0.0.12-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:98f41bf146b731ed4554c60495c53fd96339a52e02b22a869d6eaf2433047505"},
+    {file = "mojimoji-0.0.12-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:61c03620528650603b3c92f367d6db2a645c2638408add5ba03fed982af7cd1d"},
+    {file = "mojimoji-0.0.12-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f7f4da9e809fa68588e817f1ae351c4274be2366e542c51393657cae7bcf114f"},
+    {file = "mojimoji-0.0.12-cp36-cp36m-win_amd64.whl", hash = "sha256:05b589361b6f35aef96df3a7f64c2a286a7e7aed9865cd7baf1a5876bb4cd16a"},
+    {file = "mojimoji-0.0.12-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:a98fb09bd49245f9d9cd29603b912dc2f94e619e6d2f5b722553a5dbe113ce6c"},
+    {file = "mojimoji-0.0.12-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b110101148b920eba60fa4627b904fa18801c5ca3667880494b7f0d25dd1a5fe"},
+    {file = "mojimoji-0.0.12-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d974a034528cb9fb95fcade6f3ffb73dc1dc336e17413486a5094724cbe9e34f"},
+    {file = "mojimoji-0.0.12-cp37-cp37m-win_amd64.whl", hash = "sha256:f180e2e8ff47e54cc36b0de147bceaf76fab88ef06775835a55b38ef6b82c161"},
+    {file = "mojimoji-0.0.12-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:9723531661911479bbfce08ec8a62c7b5958a307f33a025fe938d19550b13f9d"},
+    {file = "mojimoji-0.0.12-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7a15864d8de07a487280c528fe3d2aeaad05bb2ce6d8bf201fc1480b0b5db337"},
+    {file = "mojimoji-0.0.12-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:59cc0af7d3be3b6847c8dcf1a4e0d09cc0646ff64c101308903d14871245403c"},
+    {file = "mojimoji-0.0.12-cp38-cp38-win_amd64.whl", hash = "sha256:8a1285040b7ef7ca5bafe095b62b99507cf19e10c6000e3279bc44d9430da3d9"},
+    {file = "mojimoji-0.0.12-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:ae5e6e8d4e70849f4217fa00ca7d770354f5a13c04778b6f07f3bceb0a636abd"},
+    {file = "mojimoji-0.0.12-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b2247233f4b3bee6ab601ac7fcbd84124ad91788a7418c1430f93a4bac340218"},
+    {file = "mojimoji-0.0.12-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:515f6fa5659d77a172f1fb46950d34674f33cf487e9aa131bf9422cbe127e5f4"},
+    {file = "mojimoji-0.0.12-cp39-cp39-win_amd64.whl", hash = "sha256:b379781a0cb95eeb79939608b4a013ad7b79ba03b7fe9b795eadc40bd96a06c9"},
+    {file = "mojimoji-0.0.12.tar.gz", hash = "sha256:01a3d73e8b3c641386b1824d5106b8ea5c351a641623c910d89d8f02520c1b0e"},
 ]
 
 [[package]]
@@ -2702,6 +2777,18 @@ docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 
 [[package]]
+name = "plac"
+version = "1.3.5"
+description = "The smartest command line arguments parser in the world"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "plac-1.3.5-py2.py3-none-any.whl", hash = "sha256:a8933d21a40fe2cec177a2f96217425a4e889d275aa3e25ecf9a9640ab16d416"},
+    {file = "plac-1.3.5.tar.gz", hash = "sha256:38bdd864d0450fb748193aa817b9c458a8f5319fbf97b2261151cfc0a5812090"},
+]
+
+[[package]]
 name = "platformdirs"
 version = "3.0.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -2981,6 +3068,21 @@ files = [
 
 [package.extras]
 plugins = ["importlib-metadata"]
+
+[[package]]
+name = "pyknp"
+version = "0.6.1"
+description = "Python module for JUMAN/KNP"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "pyknp-0.6.1-py3-none-any.whl", hash = "sha256:c988cbd92d645e43d51a406835147a7c24aa849894802e22fcf5c4e1475da805"},
+    {file = "pyknp-0.6.1.tar.gz", hash = "sha256:5fca288a70304c745d20da5657c6175b5eadf7a7a571ed4f57bb157eb6e7df4d"},
+]
+
+[package.dependencies]
+six = "*"
 
 [[package]]
 name = "pyparsing"
@@ -3295,6 +3397,21 @@ files = [
 [package.dependencies]
 decorator = ">=3.4.2"
 py = ">=1.4.26,<2.0.0"
+
+[[package]]
+name = "rhoknp"
+version = "1.2.2"
+description = "Yet another Python binding for Juman++/KNP/KWJA"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "rhoknp-1.2.2-py3-none-any.whl", hash = "sha256:1f54c8846d5f3e837c6139c5d04fb8ad3941ff08a342b3c5ecdffe24929fc85f"},
+    {file = "rhoknp-1.2.2.tar.gz", hash = "sha256:06cad20185931e4581722c064ce2c44a873291663b70f75753530a4c084d1b77"},
+]
+
+[package.extras]
+cli = ["PyYAML (>=6.0,<7.0)", "fastapi (>=0.92.0,<1)", "rich (>=12.6)", "typer (>=0.6.1,<0.8)", "uvicorn (>=0.21.0,<1)"]
 
 [[package]]
 name = "rich"
@@ -3697,6 +3814,35 @@ python-versions = "*"
 files = [
     {file = "sqlitedict-2.1.0.tar.gz", hash = "sha256:03d9cfb96d602996f1d4c2db2856f1224b96a9c431bdd16e78032a72940f9e8c"},
 ]
+
+[[package]]
+name = "sudachipy"
+version = "0.6.7"
+description = "Python version of Sudachi, the Japanese Morphological Analyzer"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "SudachiPy-0.6.7-cp310-cp310-macosx_10_12_universal2.whl", hash = "sha256:8f14ae0ffeb5fa90c3c47fd25af0afdcec8cb3714f936c9cd4eb15132336148c"},
+    {file = "SudachiPy-0.6.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3e3f54006158d3112d86502f1ff3ab81f1d80c75d00ffeb853522f919a853063"},
+    {file = "SudachiPy-0.6.7-cp310-cp310-win_amd64.whl", hash = "sha256:9fdc7bd9d059821ef84e7600d69b150109ef5b71be0c68dce47616fce5bf8dac"},
+    {file = "SudachiPy-0.6.7-cp311-cp311-macosx_10_12_universal2.whl", hash = "sha256:5b7d5882e1450cdfd3235b14e569cde793d878fd018ade2871cb35e6f9f13ea6"},
+    {file = "SudachiPy-0.6.7-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:789d448bc5a3c5e0ed1e4bff505eed1be0fab3bf2e3480edd0b885c58bcd4cff"},
+    {file = "SudachiPy-0.6.7-cp311-cp311-win_amd64.whl", hash = "sha256:06e9af5af655bd74fcb793305efe0d46689b4827f295807b332f935abd974d83"},
+    {file = "SudachiPy-0.6.7-cp37-cp37m-macosx_10_12_universal2.whl", hash = "sha256:c660fb9dfd65d4d03109dfc5ab6b0e7415c79ed78c59fd456cd30e26ea6c340d"},
+    {file = "SudachiPy-0.6.7-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8f1aa21328289206520e62547d3ab8a62e1c6ed370a8b025585b302e1de772bc"},
+    {file = "SudachiPy-0.6.7-cp37-cp37m-win_amd64.whl", hash = "sha256:656628cd74b7483f1c10d25dee048983f062404f8cd04dfc3c5e28f987bc5a39"},
+    {file = "SudachiPy-0.6.7-cp38-cp38-macosx_10_12_universal2.whl", hash = "sha256:fb1085d372169df8187206dc505710d1a440f87523dbb287c4c639fb3d1eac78"},
+    {file = "SudachiPy-0.6.7-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b487890c499c927e8c6af2c76bdea3b8602f7c0a9145fe5e25cd9a82cbb96c05"},
+    {file = "SudachiPy-0.6.7-cp38-cp38-win_amd64.whl", hash = "sha256:4f60e20cd50a940f3ef57606a09f20ac2ef4262989f545e552eebb18b5484608"},
+    {file = "SudachiPy-0.6.7-cp39-cp39-macosx_10_12_universal2.whl", hash = "sha256:2d9ad67c54463eadce8728bf991c18d936b0756eedd3ed7661082aa36e7e5d60"},
+    {file = "SudachiPy-0.6.7-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d167cb59e044aff1123b534d045c66147ffa76a75196284e188c245af6fed013"},
+    {file = "SudachiPy-0.6.7-cp39-cp39-win_amd64.whl", hash = "sha256:4e368e7bfa83885fd9a6ffb0366fe73ce100caa72ab86f69b149091ce813da27"},
+    {file = "SudachiPy-0.6.7.tar.gz", hash = "sha256:e4fb026cc367e0dff7d0b8a2fce510e66d5bf7ef4728af76bfe63132b22753cd"},
+]
+
+[package.extras]
+tests = ["sudachidict-core", "tokenizers"]
 
 [[package]]
 name = "tensorboard"
@@ -4103,6 +4249,23 @@ files = [
 ]
 
 [[package]]
+name = "unidic"
+version = "1.1.0"
+description = "UniDic packaged for Python"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "unidic-1.1.0.tar.gz", hash = "sha256:0ab91c05de342c84d2a6314901fd3afb9061ecd7534dd4a0431dccbb87d921b7"},
+]
+
+[package.dependencies]
+plac = ">=1.1.3,<2.0.0"
+requests = ">=2.22.0,<3.0.0"
+tqdm = ">=4.41.1,<5.0.0"
+wasabi = ">=0.6.0,<1.0.0"
+
+[[package]]
 name = "unidic-lite"
 version = "1.0.8"
 description = "A small version of UniDic packaged for Python"
@@ -4170,6 +4333,18 @@ launch = ["boto3", "botocore", "chardet", "google-cloud-storage", "iso8601", "ku
 media = ["bokeh", "moviepy", "numpy", "pillow", "plotly", "rdkit-pypi", "soundfile"]
 models = ["cloudpickle"]
 sweeps = ["sweeps (>=0.2.0)"]
+
+[[package]]
+name = "wasabi"
+version = "0.10.1"
+description = "A lightweight console printing and formatting toolkit"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "wasabi-0.10.1-py3-none-any.whl", hash = "sha256:fe862cc24034fbc9f04717cd312ab884f71f51a8ecabebc3449b751c2a649d83"},
+    {file = "wasabi-0.10.1.tar.gz", hash = "sha256:c8e372781be19272942382b14d99314d175518d7822057cb7a97010c4259d249"},
+]
 
 [[package]]
 name = "websocket-client"
@@ -4521,4 +4696,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.12"
-content-hash = "867758cd3ecd477b16d3ddc32b0d7e5b0f99cbc6c738a0da7c648fb70c10c8dc"
+content-hash = "90d27da8a895ac20b969d522e68b783e2e108ed049cb1b73ec34f913ef0e6c70"
