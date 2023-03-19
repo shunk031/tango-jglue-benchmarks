@@ -1,11 +1,14 @@
 import logging
 from itertools import chain
-from typing import Dict, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Union
 
 import datasets as ds
 from tango import Step
+from tango.common.params import Params
+from tango.format import Format
 from tango.integrations.datasets import DatasetsFormat
 from tango.integrations.transformers import Tokenizer
+from tango.step import StepResources
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +18,44 @@ class TokenizeSwag(Step):
     DETERMINISTIC: bool = True
     CACHEABLE: bool = True
     FORMAT = DatasetsFormat()
+
+    def __init__(
+        self,
+        remove_columns: Optional[List[str]] = None,
+        step_name: Optional[str] = None,
+        cache_results: Optional[bool] = None,
+        step_format: Optional[Format] = None,
+        step_config: Optional[Union[Dict[str, Any], Params]] = None,
+        step_unique_id_override: Optional[str] = None,
+        step_resources: Optional[StepResources] = None,
+        step_metadata: Optional[Dict[str, Any]] = None,
+        step_extra_dependencies: Optional[Iterable["Step"]] = None,
+        **kwargs,
+    ):
+        super().__init__(
+            step_name,
+            cache_results,
+            step_format,
+            step_config,
+            step_unique_id_override,
+            step_resources,
+            step_metadata,
+            step_extra_dependencies,
+            **kwargs,
+        )
+        self.remove_columns = (
+            remove_columns
+            if remove_columns
+            else [
+                "q_id",
+                "question",
+                "choice0",
+                "choice1",
+                "choice2",
+                "choice3",
+                "choice4",
+            ]
+        )
 
     def run(  # type: ignore[override]
         self,
@@ -64,14 +105,6 @@ class TokenizeSwag(Step):
             function=tokenize_function,
             batched=True,
             desc="Tokenizing dataset",
-            remove_columns=[
-                "q_id",
-                "question",
-                "choice0",
-                "choice1",
-                "choice2",
-                "choice3",
-                "choice4",
-            ],
+            remove_columns=self.remove_columns,
         )
         return dataset
