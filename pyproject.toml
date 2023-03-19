@@ -11,9 +11,16 @@ python = ">=3.9,<3.12"
 ai2-tango = {extras = ["all"], version = "^1.2.0"}
 torch = "1.12.1"
 fugashi = "^1.2.1"
-unidic-lite = "^1.0.8"
 evaluate = "^0.4.0"
 scikit-learn = "^1.2.1"
+ipadic = "^1.0.0"
+sudachipy = "^0.6.7"
+rhoknp = "^1.2.2"
+pyknp = "^0.6.1"
+mecab-python3 = "^1.0.6"
+unidic = "^1.1.0"
+unidic-lite = "^1.0.8"
+mojimoji = "^0.0.12"
 
 
 [tool.poetry.group.dev.dependencies]
