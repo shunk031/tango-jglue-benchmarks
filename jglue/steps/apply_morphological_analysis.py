@@ -1,5 +1,4 @@
 import logging
-from dataclasses import dataclass
 from typing import List, Literal, Optional
 
 import datasets as ds
@@ -12,11 +11,12 @@ logger = logging.getLogger(__name__)
 Analyzer = Literal["jumanpp", "juman", "mecab", "char"]
 
 
-@dataclass
 class Word(object):
-    string: str
-    pos: Optional[str] = None
-    offset: int = 0
+    def __init__(self, string: str, pos: Optional[str] = None, offset: int = 0):
+        self.string = string
+        self.pos = pos
+        self.start_position = offset
+        self.end_position = offset + len(self.string) - 1
 
 
 class MorphologicalAnalyzer(object):
@@ -29,12 +29,16 @@ class MorphologicalAnalyzer(object):
         self._analyzer_name = analyzer_name
         self._is_han_to_zen = is_han_to_zen
 
-        if self._analyzer_name == "jumanpp" or self._analyzer_name == "juman":
+        if self._analyzer_name == "jumanpp":
+            from rhoknp import Jumanpp
+
+            self._jumanpp = Jumanpp()
+
+        elif self._analyzer_name == "juman":
             from pyknp import Juman
 
-            self._juman = Juman(
-                jumanpp=True if self._analyzer_name == "jumanpp" else False
-            )
+            self._juman = Juman(jumanpp=False)
+
         elif self._analyzer_name == "mecab":
             import MeCab
 
@@ -42,8 +46,24 @@ class MorphologicalAnalyzer(object):
             if mecab_dic_dir is not None:
                 tagger_option_string += f" -d {mecab_dic_dir}"
             self._mecab = MeCab.Tagger(tagger_option_string)
+
         else:
             raise ValueError(f"Invalid analyzer: {self._analyzer_name}")
+
+    def _get_words_jumanpp(self, string: str) -> List[Word]:
+        words = []
+        offset = 0
+
+        try:
+            result = self._jumanpp.apply_to_sentence(string)
+        except ValueError as err:
+            logger.warning(f"{err}. skip sentence: {string}")
+
+        for mrph in result.morphemes:
+            words.append(Word(mrph.text, pos=mrph.pos, offset=offset))
+            offset += len(mrph.text)
+
+        return words
 
     def _get_words_juman(self, string: str) -> List[Word]:
         words = []
@@ -51,8 +71,8 @@ class MorphologicalAnalyzer(object):
 
         try:
             result = self._juman.analysis(string)
-        except ValueError as e:
-            logger.warning(f"{e}. skip sentence: {string}")
+        except ValueError as err:
+            logger.warning(f"{err}. skip sentence: {string}")
             return []
 
         for mrph in result.mrph_list():
@@ -85,12 +105,12 @@ class MorphologicalAnalyzer(object):
         return words
 
     def get_words(self, string: str) -> List[Word]:
-        if self._analyzer_name == "jumanpp" or self._analyzer_name == "juman":
+        if self._analyzer_name == "jumanpp":
+            words = self._get_words_jumanpp(string)
+        elif self._analyzer_name == "juman":
             words = self._get_words_juman(string)
-
         elif self._analyzer_name == "mecab":
             words = self._get_words_mecab(string)
-
         elif self._analyzer_name == "char":
             words = self._get_words_char(string)
         else:
