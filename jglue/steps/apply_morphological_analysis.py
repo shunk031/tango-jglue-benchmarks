@@ -45,36 +45,54 @@ class MorphologicalAnalyzer(object):
         else:
             raise ValueError(f"Invalid analyzer: {self._analyzer_name}")
 
-    def get_words(self, string: str) -> List[Word]:
+    def _get_words_juman(self, string: str) -> List[Word]:
         words = []
         offset = 0
 
-        if self._analyzer_name == "jumanpp" or self._analyzer_name == "juman":
-            try:
-                result = self._juman.analysis(string)
-            except ValueError as e:
-                logger.warning(f"{e}. skip sentence: {string}")
-                return []
+        try:
+            result = self._juman.analysis(string)
+        except ValueError as e:
+            logger.warning(f"{e}. skip sentence: {string}")
+            return []
 
-            for mrph in result.mrph_list():
-                words.append(Word(mrph.midasi, pos=mrph.hinsi, offset=offset))
-                offset += len(mrph.midasi)
+        for mrph in result.mrph_list():
+            words.append(Word(mrph.midasi, pos=mrph.hinsi, offset=offset))
+            offset += len(mrph.midasi)
+        return words
+
+    def _get_words_mecab(self, string: str) -> List[Word]:
+        words = []
+        offset = 0
+
+        self._mecab.parse("")
+        node = self._mecab.parseToNode(string)
+        while node:
+            word = node.surface
+            pos = node.feature.split(",")[0]
+            if node.feature.split(",")[0] != "BOS/EOS":
+                words.append(Word(word, pos=pos, offset=offset))
+                offset += len(word)
+            node = node.next
+        return words
+
+    def _get_words_char(self, string: str) -> List[Word]:
+        words = []
+        offset = 0
+
+        for char in list(string):
+            words.append(Word(char, offset=offset))
+            offset += 1
+        return words
+
+    def get_words(self, string: str) -> List[Word]:
+        if self._analyzer_name == "jumanpp" or self._analyzer_name == "juman":
+            words = self._get_words_juman(string)
 
         elif self._analyzer_name == "mecab":
-            self._mecab.parse("")
-            node = self._mecab.parseToNode(string)
-            while node:
-                word = node.surface
-                pos = node.feature.split(",")[0]
-                if node.feature.split(",")[0] != "BOS/EOS":
-                    words.append(Word(word, pos=pos, offset=offset))
-                    offset += len(word)
-                node = node.next
+            words = self._get_words_mecab(string)
 
         elif self._analyzer_name == "char":
-            for char in list(string):
-                words.append(Word(char, offset=offset))
-                offset += 1
+            words = self._get_words_char(string)
         else:
             raise ValueError(f"Invalid analyzer: {self._analyzer_name}")
 
