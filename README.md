@@ -1,4 +1,4 @@
-# JGLUE benchmarks with [`AI2 Tango`](https://github.com/allenai/tango)
+# JGLUE benchmarks with [`AI2-Tango`](https://github.com/allenai/tango)
 
 ## Setup
 
