@@ -17,7 +17,7 @@ local val_metric_name = "accuracy";
 local devices = 1;
 
 {
-    steps(pretrained_model, is_pre_tokenize=false, analyzer="jumanpp") ::
+    steps(pretrained_model, is_pre_tokenize=false, analyzer="jumanpp", mecab_dic_dir=null) ::
         {
             raw_data: {
                 type: "datasets::load",
@@ -29,6 +29,7 @@ local devices = 1;
                 dataset: { type: "ref", ref: "raw_data" },
                 analyzer_name: analyzer,
                 column_names: ["sentence1", "sentence2"],
+                mecab_dic_dir: mecab_dic_dir,
             },
             tokenize_data: {
                 type: "tokenize_glue",
