@@ -89,6 +89,12 @@ CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/tohoku_bert_base.jsonnet -i jglue/
 CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/tohoku_bert_base_char.jsonnet -i jglue/ -w workspace/jnli/tohoku_bert_base_char
 ```
 
+- Tohoku BERT large
+
+```console
+CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/tohoku_bert_large.jsonnet -i jglue/ -w workspace/jnli/tohoku_bert_large
+```
+
 - LUKE base
 
 ```console
@@ -99,6 +105,34 @@ CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/luke_japanese_base_lite.jsonnet -i
 
 ```console
 CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/nict_bert_base.jsonnet -i jglue/ -w workspace/jnli/nict_bert_base
+```
+
+- Waseda RoBERTa base
+
+```console
+CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/waseda_roberta_base.jsonnet -i jglue/ -w workspace/jnli/waseda_roberta_base
+```
+
+- Waseda RoBERTa large
+
+```console
+CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/waseda_roberta_large_s128.jsonnet -i jglue/ -w workspace/jnli/waseda_roberta_large_s128
+```
+
+```console
+CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/waseda_roberta_large_s512.jsonnet -i jglue/ -w workspace/jnli/waseda_roberta_large_s512
+```
+
+- XLM RoBERTa base
+
+```console
+CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/xlm_roberta_base.jsonnet -i jglue/ -w workspace/jnli/xlm_roberta_base
+```
+
+- XLM RoBERTa large
+
+```console
+CUDA_VISIBLE_DEVICES=0 tango run configs/jnli/xlm_roberta_large.jsonnet -i jglue/ -w workspace/jnli/xlm_roberta_large
 ```
 
 ### JSQuAD

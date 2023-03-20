@@ -1,7 +1,6 @@
 local task_name = "JNLI";
 local metric_name = "wnli";
 
-local max_seq_length = 128;
 local num_epochs = 4;
 local batch_size = 32;
 local learning_rate = 5e-5;
@@ -17,7 +16,7 @@ local val_metric_name = "accuracy";
 local devices = 1;
 
 {
-    steps(pretrained_model, is_pre_tokenize=false, analyzer="jumanpp", mecab_dic_dir=null) ::
+    steps(pretrained_model, max_seq_length=128, is_pre_tokenize=false, analyzer="jumanpp", mecab_dic_dir=null) ::
         {
             raw_data: {
                 type: "datasets::load",
@@ -87,20 +86,20 @@ local devices = 1;
                 minimize_val_metric: false,
                 checkpoint_every: validate_every * 3,
                 device_count: devices,
-                // callbacks: [
-                //     {
-                //         type: "wandb::log",
-                //         project: "tango-jglue-benchmarks",
-                //         entity: "shunk031",
-                //         group: task_name,
-                //         name: "%s - %s" % [task_name, pretrained_model],
-                //         tags: [
-                //             pretrained_model,
-                //             task_name,
-                //             metric_name,
-                //         ],
-                //     },
-                // ],
+                callbacks: [
+                    {
+                        type: "wandb::log",
+                        project: "tango-jglue-benchmarks",
+                        entity: "shunk031",
+                        group: task_name,
+                        name: "%s - %s" % [task_name, pretrained_model],
+                        tags: [
+                            pretrained_model,
+                            task_name,
+                            metric_name,
+                        ],
+                    },
+                ],
             },
             eval_model: {
                 type: "torch::eval",

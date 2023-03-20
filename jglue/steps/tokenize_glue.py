@@ -55,7 +55,6 @@ class TokenizeGlue(Step):
                 padding="max_length",
                 max_length=max_seq_length,
             )
-
             result["label"] = examples["label"]
 
             return result
